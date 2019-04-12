@@ -15,5 +15,8 @@ spring.datasource.url=jdbc:mysql://localhost:3306/db_example
 spring.datasource.username=springuser
 spring.datasource.password=ThePassword
 
-//swagger api
+//swagger api gui
 http://localhost:8080/swagger-ui.html
+
+//sagger api yaml/json
+http://localhost:8080/v2/api-docs
