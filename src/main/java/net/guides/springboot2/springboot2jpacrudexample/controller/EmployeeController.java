@@ -52,7 +52,7 @@ public class EmployeeController {
         return ResponseEntity.ok(updatedEmployee);
     }
 
-    @DeleteMapping("/employees")
+    @DeleteMapping("/employees/{id}")
     public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId) throws ResourceNotFoundException{
 
         Employee employee = employeeRepository.findById(employeeId)
