@@ -19,11 +19,13 @@ public class EmployeeController {
     @Autowired
     EmployeeRepository employeeRepository;
 
+    @CrossOrigin()
     @GetMapping("/employees")
     public List<Employee> getAllEmployees(){
         return employeeRepository.findAll();
     }
 
+    @CrossOrigin()
     @GetMapping("/employees/{id}")
     //custom exception
     public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
@@ -33,11 +35,13 @@ public class EmployeeController {
         return ResponseEntity.ok().body(employee);
     }
 
+    @CrossOrigin()
     @PostMapping("/employees")
     public Employee createEmployee(@Valid @RequestBody Employee employee){
         return employeeRepository.save(employee);
     }
 
+    @CrossOrigin()
     @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId, @Valid @RequestBody Employee employeeDetails)
             throws ResourceNotFoundException{
@@ -52,6 +56,7 @@ public class EmployeeController {
         return ResponseEntity.ok(updatedEmployee);
     }
 
+    @CrossOrigin()
     @DeleteMapping("/employees/{id}")
     public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId) throws ResourceNotFoundException{
 
