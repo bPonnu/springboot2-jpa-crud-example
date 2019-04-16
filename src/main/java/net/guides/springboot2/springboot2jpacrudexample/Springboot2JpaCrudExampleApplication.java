@@ -8,6 +8,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+// tutorial from: https://www.javaguides.net/2018/09/spring-boot-2-jpa-mysql-crud-example.html
 @SpringBootApplication
 @EnableSwagger2
 public class Springboot2JpaCrudExampleApplication {

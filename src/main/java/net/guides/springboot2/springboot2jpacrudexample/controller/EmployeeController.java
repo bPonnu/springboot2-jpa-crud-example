@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@RestController // gives us all the rest functions for the frontend
 @RequestMapping("/api/v1")
 public class EmployeeController {
 
@@ -28,9 +28,9 @@ public class EmployeeController {
     @CrossOrigin()
     @GetMapping("/employees/{id}")
     //custom exception
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId) //id comes from the url
             throws ResourceNotFoundException {
-        Employee employee = employeeRepository.findById(employeeId)
+        Employee employee = employeeRepository.findById(employeeId) //generated method from JpaRepository
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
         return ResponseEntity.ok().body(employee);
     }

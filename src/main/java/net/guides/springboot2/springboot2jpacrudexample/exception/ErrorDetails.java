@@ -2,6 +2,7 @@ package net.guides.springboot2.springboot2jpacrudexample.exception;
 
 import java.util.Date;
 
+// is used in GlobalExceptionHandler.class
 public class ErrorDetails {
     private Date timestamp;
     private String message;
