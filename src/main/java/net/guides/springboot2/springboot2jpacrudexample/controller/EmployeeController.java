@@ -5,6 +5,7 @@ import net.guides.springboot2.springboot2jpacrudexample.model.Employee;
 import net.guides.springboot2.springboot2jpacrudexample.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,6 +19,9 @@ public class EmployeeController {
 
     @Autowired
     EmployeeRepository employeeRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @CrossOrigin()
     @GetMapping("/employees")
@@ -38,6 +42,7 @@ public class EmployeeController {
     @CrossOrigin()
     @PostMapping("/employees")
     public Employee createEmployee(@Valid @RequestBody Employee employee){
+        employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));
         return employeeRepository.save(employee);
     }
 

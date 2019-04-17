@@ -20,14 +20,24 @@ public class Employee {
     @Column(name = "email_address", nullable = false)
     private String emailId;
 
+    @Column(name = "user_Name", nullable = false)
+    private String userName;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+
     public Employee(){
 
     }
 
-    public Employee (String firstName, String lastName, String emailId){
+    public Employee (String firstName, String lastName, String emailId, String userName, String password){
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailId = emailId;
+        this.userName = userName;
+        this.password = password;
+
     }
 
     public long getId(){
@@ -62,6 +72,22 @@ public class Employee {
 
     public void setEmailId(String emailId){
         this.emailId = emailId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
