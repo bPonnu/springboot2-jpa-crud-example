@@ -67,7 +67,9 @@ public class EmployeeController {
         employee.setEmailId(employeeDetails.getEmailId());
         employee.setLastName(employeeDetails.getLastName());
         employee.setFirstName(employeeDetails.getFirstName());
-        employee.setPassword(bCryptPasswordEncoder.encode(employeeDetails.getPassword()));
+        if(!employeeDetails.getPassword().isEmpty()){
+            employee.setPassword(bCryptPasswordEncoder.encode(employeeDetails.getPassword()));
+        }
         final Employee updatedEmployee = employeeRepository.save(employee);
         return ResponseEntity.ok(updatedEmployee);
     }
