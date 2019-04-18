@@ -67,9 +67,16 @@ public class EmployeeController {
         employee.setEmailId(employeeDetails.getEmailId());
         employee.setLastName(employeeDetails.getLastName());
         employee.setFirstName(employeeDetails.getFirstName());
+
         if(!employeeDetails.getPassword().isEmpty()){
             employee.setPassword(bCryptPasswordEncoder.encode(employeeDetails.getPassword()));
         }
+
+        String role = employeeDetails.getUserRole();
+        if(role.equals("USER")||role.equals("MODERATOR")||role.equals("ADMINISTRATOR")){
+            employee.setUserRole(employeeDetails.getUserRole());
+        }
+
         final Employee updatedEmployee = employeeRepository.save(employee);
         return ResponseEntity.ok(updatedEmployee);
     }

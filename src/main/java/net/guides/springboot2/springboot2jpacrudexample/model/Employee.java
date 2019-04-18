@@ -26,17 +26,20 @@ public class Employee {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "user_Role", nullable = false)
+    private String userRole;
 
     public Employee(){
 
     }
 
-    public Employee (String firstName, String lastName, String emailId, String userName, String password){
+    public Employee (String firstName, String lastName, String emailId, String userName, String password, String userRole){
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailId = emailId;
         this.userName = userName;
         this.password = password;
+        this.userRole = "USER";
 
     }
 
@@ -88,6 +91,14 @@ public class Employee {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     @Override
