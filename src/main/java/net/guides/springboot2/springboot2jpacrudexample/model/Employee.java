@@ -20,7 +20,7 @@ public class Employee {
     @Column(name = "email_address", nullable = false)
     private String emailId;
 
-    @Column(name = "user_Name", nullable = false)
+    @Column(name = "user_Name", nullable = false, columnDefinition = "NVARCHAR(255)", unique = true)
     private String userName;
 
     @Column(name = "password", nullable = false)
