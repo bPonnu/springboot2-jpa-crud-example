@@ -60,6 +60,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .sign(HMAC512(SECRET.getBytes()));
 
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        
+        // CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Expose-Headers
+        res.addHeader("Access-Control-Expose-Headers", HEADER_STRING);
     }
 
 }

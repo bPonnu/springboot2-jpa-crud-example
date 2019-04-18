@@ -39,6 +39,16 @@ public class EmployeeController {
         return ResponseEntity.ok().body(employee);
     }
 
+    @GetMapping("/employees/usernames/{username}")
+    public ResponseEntity<Employee> getEmployeeByUserName(@PathVariable(value = "username") String username)
+        throws ResourceNotFoundException{
+        Employee employee = employeeRepository.findByUserName(username);
+        if (employee == null) {
+            throw new ResourceNotFoundException("Employee not found for this id :: " + username);
+        }
+        return ResponseEntity.ok().body(employee);
+    }
+
     @CrossOrigin()
     @PostMapping("/employees")
     public Employee createEmployee(@Valid @RequestBody Employee employee){
